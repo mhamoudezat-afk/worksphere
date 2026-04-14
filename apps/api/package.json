@@ -2,10 +2,10 @@
   "name": "worksphere-api",
   "version": "1.0.0",
   "description": "WorkSphere Backend API",
-  "main": "src/server-simple.js",
+  "main": "src/server-final.js",
   "scripts": {
-    "start": "node src/server-simple.js",
-    "dev": "node src/server-simple.js"
+    "start": "node src/server-final.js",
+    "dev": "node src/server-final.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
