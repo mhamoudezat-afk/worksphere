@@ -8,6 +8,9 @@ const fs = require('fs');
 
 const app = express();
 
+app.set('trust proxy', 1);
+
+
 // ============ Security Middleware ============
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
