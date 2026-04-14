@@ -21,20 +21,20 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
+// CORS Configuration
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
   'https://worksphere.vercel.app',
   'https://worksphere-t1jv.vercel.app',
   'https://worksphere33.netlify.app',
-  'https://worksphere-cvk5.vercel.app',  // أضف هذا
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
 app.use(cors({
-  origin: (origin, callback) => {
+  origin: function(origin, callback) {
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+    if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -44,9 +44,6 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true }));
 
 // ============ قاعدة بيانات مؤقتة ============
 let users = [];
