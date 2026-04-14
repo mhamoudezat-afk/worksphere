@@ -2,17 +2,15 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# نسخ ملفات package الخاصة بالـ API فقط
-COPY apps/api/package*.json ./apps/api/
+# نسخ package.json من المسار الصحيح
+COPY package*.json ./
 
 # تثبيت الاعتماديات
-RUN cd apps/api && npm install --production
+RUN npm install
 
-# نسخ كود الـ API
-COPY apps/api ./apps/api
+# نسخ باقي الملفات
+COPY . .
 
-# تعيين منفذ التشغيل
 EXPOSE 5000
 
-# أمر بدء التشغيل
-CMD ["node", "apps/api/src/server-fixed.js"]
+CMD ["node", "src/server-fixed.js"]
