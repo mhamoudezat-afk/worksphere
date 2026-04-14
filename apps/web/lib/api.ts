@@ -1,13 +1,16 @@
 import axios from 'axios';
 
+// 👇 غير السطر ده إلى الرابط ده
 const API_URL = 'https://wonderful-connection-production-f0fc.up.railway.app/api';
+
 const apiClient = axios.create({
   baseURL: API_URL,
-  timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+// باقي الكود زي ما هو...
 
 // Request interceptor
 apiClient.interceptors.request.use(
